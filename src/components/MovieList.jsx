@@ -5,6 +5,11 @@ export default function MovieList() {
 
     const { movies, setMovies, searchText, setSearchText, handleSubmit } = useContext(MovieContext)
 
+    const toFlag = (countryCode) => {
+        return countryCode
+            .toUpperCase()
+            .replace(/[A-Z]/g, (char) => String.fromCharCode(char.charCodeAt(0) + 127397))
+    }
 
     return (
         <>
@@ -28,7 +33,9 @@ export default function MovieList() {
                         <div key={movie.id} className="col-3">
                             <h2>{movie.title}</h2>
                             <p>{movie.original_title}</p>
-                            <p>{movie.original_language} </p>
+                            <p>
+                                Language: {toFlag(movie.original_language)}
+                            </p>
                             <p>{movie.vote_average}</p>
                         </div>
 
