@@ -5,12 +5,15 @@ export default function MovieList() {
 
     const { movies, setMovies, searchText, setSearchText, handleSubmit } = useContext(MovieContext)
 
-    const toFlag = (countryCode) => {
-        console.log("countryCode:", countryCode);
-        if (!countryCode) return "🌍";
-        return countryCode
-            .toUpperCase()
-            .replace(/[A-Z]/g, (char) => String.fromCharCode(char.charCodeAt(0) + 127397))
+
+    function starRating(vote_average) {
+        const rating = parseFloat(vote_average)
+
+        if (isNaN(rating)) {
+            return "No Rating";
+        }
+
+        return Math.round(rating / 2);
     }
 
     return (
@@ -38,9 +41,9 @@ export default function MovieList() {
 
                             <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`} alt={movie.title} />
                             <p>
-                                Language: {toFlag(movie.original_language)}
+                                Language: {movie.original_language}
                             </p>
-                            <p>{movie.vote_average}</p>
+                            <p>Rating: {starRating(movie.vote_average)}</p>
                         </div>
 
                     ))}
