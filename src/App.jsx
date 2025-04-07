@@ -1,7 +1,8 @@
-import MovieContext from "./context/MovieContext"
+import { MovieProvider } from "./context/MovieContext"
 import MoviePage from "./components/MoviePage"
 import MovieList from "./components/MovieList"
 import MovieCard from "./components/MovieCard"
+import { MovieContext } from "./context/MovieContext"
 
 function App() {
 
@@ -10,9 +11,12 @@ function App() {
     <>
 
       <MovieContext.Provider value={{}}>
-        <MoviePage />
-        <MovieList />
-        <MovieCard />
+        <MovieProvider>
+          <MoviePage />
+          <MovieList />
+          <MovieCard />
+        </MovieProvider>
+
 
       </MovieContext.Provider>
     </>
