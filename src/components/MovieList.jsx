@@ -6,6 +6,8 @@ export default function MovieList() {
     const { movies, setMovies, searchText, setSearchText, handleSubmit } = useContext(MovieContext)
 
     const toFlag = (countryCode) => {
+        console.log("countryCode:", countryCode);
+        if (!countryCode) return "🌍";
         return countryCode
             .toUpperCase()
             .replace(/[A-Z]/g, (char) => String.fromCharCode(char.charCodeAt(0) + 127397))
@@ -33,6 +35,8 @@ export default function MovieList() {
                         <div key={movie.id} className="col-3">
                             <h2>{movie.title}</h2>
                             <p>{movie.original_title}</p>
+
+                            <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`} alt={movie.title} />
                             <p>
                                 Language: {toFlag(movie.original_language)}
                             </p>
