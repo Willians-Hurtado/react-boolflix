@@ -14,3 +14,54 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.card {
+  background-color: #242424;
+
+}
+
+.logo {
+  width: 10rem;
+
+}
+
+.info {
+  display: none;
+
+}
+
+.poster:hover {
+  img {
+    display: none;
+  }
+
+  .info {
+    line-height: 1rem;
+    color: white;
+    padding: 1rem;
+    display: block;
+    height: 70vh;
+    background-color: rgba(0, 0, 0, 0.87);
+    border-radius: 1rem;
+
+    span {
+      font-size: 0.9rem;
+      color: lightgray;
+    }
+
+    p {
+      gap: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 1.2rem;
+      color: white;
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+
+.star {
+  display: flex;
+  color: gold;
+}
