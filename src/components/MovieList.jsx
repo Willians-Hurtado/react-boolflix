@@ -13,7 +13,19 @@ export default function MovieList() {
             return "No Rating";
         }
 
-        return Math.round(rating / 2);
+        const roundedRating = Math.round(rating / 2);
+
+        const stars = []
+
+        for (let i = 1; i <= 5; i++) {
+            if (i <= roundedRating) {
+                stars.push("fas fa-star")
+
+            } else {
+                stars.push("far fa-star")
+            }
+        }
+        return stars;
     }
 
     return (
@@ -43,7 +55,15 @@ export default function MovieList() {
                             <p>
                                 Language: {movie.original_language}
                             </p>
-                            <p>Rating: {starRating(movie.vote_average)}</p>
+                            <p>Rating:
+                                {starRating(movie.vote_average).map((star, index) => (
+                                    <i key={index} className={`${star}`}></i>
+
+                                ))}
+
+
+
+                            </p>
                         </div>
 
                     ))}
